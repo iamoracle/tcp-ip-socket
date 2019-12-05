@@ -5,20 +5,20 @@ Extract the server.c and client.c to a folder, launch the terminal from the fold
 
 You can compile the server and client using
 
-gcc client.c -o client
+> gcc client.c -o client
 
-gcc server.c -o server
+> gcc server.c -o server
 
 Then, run the server using
 
-./server 127.0.0.1 10050
+> ./server 127.0.0.1 10050
 
 Then, run the client using
 
-./client 127.0.0.1 10050
+> ./client 127.0.0.1 10050
 
 You can use other IP address and port number e.g.
 
-./server <IP> <PORT>
+> ./server <IP> <PORT>
 
-./client <IP> <PORT>
+> ./client <IP> <PORT>
