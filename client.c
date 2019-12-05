@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+
 #include <sys/socket.h>
 #include <sys/types.h>
 
@@ -10,10 +11,11 @@
 
 #define BUFFER_SIZE 1024
 
-// #define PORT 10900
+/* to run the code use ./client 127.0.0.1 5050 */
 
 int main(int argc, char *argv[])
 {
+
     if (argc != 3)
     {
         printf("\033[1;31m");
@@ -31,15 +33,15 @@ int main(int argc, char *argv[])
 
     int sockfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP), bytes;
 
-    if (sockfd > 0)
+    if (sockfd >= 0)
     {
         printf("\033[0;32m");
-        printf("\n[%d] socket successfully created\n", activityCount++);
+        printf("\n[%d] socket successfully initialized\n", activityCount++);
     }
     else
     {
         printf("\033[1;31m");
-        printf("\nFailed to create socket, client exiting\n");
+        printf("\nFailed to initialized socket, client exiting\n");
         exit(-1);
     }
 
@@ -59,7 +61,7 @@ int main(int argc, char *argv[])
     else
     {
         printf("\033[0;31m");
-        printf("\nFailed to connecting to server, client exiting\n");
+        printf("\nFailed to connecting to server, client exiting now\n");
         exit(-1);
     }
 
@@ -71,8 +73,7 @@ int main(int argc, char *argv[])
 
         printf("Type your message here & press enter key: ");
 
-        while ((message[index++] = getchar()) != '\n')
-            ;
+        while ((message[index++] = getchar()) != '\n');
 
         message[BUFFER_SIZE] = '\0';
 
@@ -106,4 +107,6 @@ int main(int argc, char *argv[])
             printf("\nFailed to receive from server, client exiting\n");
         }
     }
+
+    shutdown(sockfd, SHUT_RDWR);
 }
