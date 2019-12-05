@@ -11,11 +11,11 @@ You can compile the server and client using
 
 Then, run the server using
 
-> ./server 127.0.0.1 10050
++ > ./server 127.0.0.1 10050
 
 Then, run the client using
 
-> ./client 127.0.0.1 10050
+- > ./client 127.0.0.1 10050
 
 You can use other IP address and port number e.g.
 
